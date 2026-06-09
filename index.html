@@ -1,37 +1,384 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My First GitHub Pages Site</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brian's Lead Walkers - Baltimore City Pet Care</title>
+    <style>
+        :root {
+            --primary: #ff9900;
+            --primary-hover: #e08800;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --text: #333333;
+            --border: #e2e8f0;
+        }
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f7fa;
-      margin: 0;
-      padding: 40px;
-      color: #333;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: #ffffff;
-      padding: 40px;
-      border-radius: 8px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    }
-    h1 {
-      margin-top: 0;
-    }
-  </style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+
+        /* Hero Header */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 110px 20px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        header .service-area {
+            background-color: rgba(255, 153, 0, 0.85);
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            max-width: 650px;
+            margin: 0 auto 25px auto;
+            font-weight: 300;
+        }
+
+        .contact-phone {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: #fff;
+            display: block;
+            text-decoration: none;
+        }
+
+        .contact-phone:hover {
+            color: var(--primary);
+        }
+
+        .btn-main {
+            background-color: var(--primary);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .btn-main:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Section Settings */
+        section {
+            padding: 70px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        /* Image Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-card h3 {
+            padding: 15px 15px 5px 15px;
+            color: var(--dark);
+            font-size: 1.2rem;
+        }
+
+        .gallery-card p {
+            padding: 0 15px 15px 15px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Split Section: Form & FAQ */
+        .split-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+            background-color: var(--light);
+            max-width: 100%;
+            padding: 70px 20px;
+        }
+
+        .split-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        @media (max-width: 850px) {
+            .split-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Sign-Up Form */
+        .form-box {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+
+        .form-box h3 {
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            color: var(--dark);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-box button {
+            background-color: var(--primary);
+            color: white;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .form-box button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* FAQ Layout */
+        .faq-box h3 {
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            color: var(--dark);
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+        }
+
+        .faq-item h4 {
+            color: var(--dark);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-item h4::before {
+            content: "🐾";
+            margin-right: 8px;
+            font-size: 1rem;
+        }
+
+        .faq-item p {
+            color: #555;
+            font-size: 0.98rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: #a0aec0;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="container">
-    <h1>🚀 It Works!</h1>
-    <p>Your website is now powered by <strong>GitHub Pages</strong>.</p>
-    <p>Edit <code>index.html</code> anytime to change this page.</p>
-  </div>
+
+    <header>
+        <div class="service-area">Serving Mt Vernon & Waverly</div>
+        <h1>Brian's Lead Walkers</h1>
+        <p>Reliable, structured, and attentive dog walking keeping your pets safe, happy, and active in Baltimore City.</p>
+        <a href="tel:6674405164" class="contact-phone">📞 667-440-5164</a>
+        <a href="#booking-form" class="btn-main">Book a Walk / Ask Questions</a>
+    </header>
+
+    <section id="gallery">
+        <h2>Our Happy Clients</h2>
+        <div class="section-subtitle">A look at some of the awesome dogs we track and care for every day.</div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-card">
+                <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=500" alt="Golden Retriever client">
+                <h3>Max</h3>
+                <p>An energetic retriever who loves long park strolls, open field runs, and dynamic fetch routines.</p>
+            </div>
+            <div class="gallery-card">
+                <img src="https://images.unsplash.com/photo-1537151608828-ea2b117b6b86?auto=format&fit=crop&q=80&w=500" alt="Small dog client">
+                <h3>Luna</h3>
+                <p>A curious explorer specializing in steady neighborhood tracking walks and scheduled midday breaks.</p>
+            </div>
+            <div class="gallery-card">
+                <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=500" alt="Playful puppy client">
+                <h3>Rocky</h3>
+                <p>A cheerful companion focused on routine route conditioning, structural socialization, and active play.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="split-container" id="booking-form">
+        <div class="split-content">
+            
+            <div class="form-box">
+                <h3>Get in Touch with Brian</h3>
+                <form action="#" method="POST" onsubmit="alert('Thank you! Your details have been sent to Brian.'); return false;">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="John Doe" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="john@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="neighborhood">Your Location</label>
+                        <select id="neighborhood">
+                            <option value="mt-vernon">Mount Vernon</option>
+                            <option value="waverly">Waverly</option>
+                            <option value="other-baltimore">Other Baltimore City Area</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="purpose">How Can We Help?</label>
+                        <select id="purpose">
+                            <option value="walks">Schedule Regular Dog Walking</option>
+                            <option value="question">General Inquiry / Question</option>
+                            <option value="other">Custom Pet Care Request</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="details">Details / Notes about your Pet</label>
+                        <textarea id="details" rows="4" placeholder="Tell us about your dog's temperament, schedule constraints, or specific tracking details..."></textarea>
+                    </div>
+                    
+                    <button type="submit">Submit Details</button>
+                </form>
+            </div>
+
+            <div class="faq-box">
+                <h3>Frequently Asked Questions</h3>
+                
+                <div class="faq-item">
+                    <h4>What are your standard service hours?</h4>
+                    <p>We provide operational coverage and structured scheduling intervals seven days a week, running from 7:00 AM to 7:00 PM.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4>How do you handle routing and household security?</h4>
+                    <p>Safety and systematic handling are built directly into our operational workflow. Every home access routine and path sequence is explicitly verified for structural household security.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4>Can I submit updates or modifications to the schedule?</h4>
+                    <p>Absolutely. You can drop updates directly through our contact portal, or reach Brian directly via phone to handle quick schedule adjustments.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p style="margin-bottom: 10px;"><strong>Contact Brian:</strong> 667-440-5164 | Mount Vernon & Waverly, Baltimore, MD</p>
+        <p>&copy; 2026 Whoisbeep. All rights reserved. Professional Dog Walking and Domestic Pet Care Operations.</p>
+    </footer>
+
 </body>
 </html>
